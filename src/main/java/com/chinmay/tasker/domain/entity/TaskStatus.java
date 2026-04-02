@@ -1,6 +1,6 @@
 package com.chinmay.tasker.domain.entity;
 
-public enum Status {
+public enum TaskStatus {
     todo,
     inProgress,
     done
