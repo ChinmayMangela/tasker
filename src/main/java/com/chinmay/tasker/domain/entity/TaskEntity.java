@@ -39,7 +39,7 @@ public class TaskEntity {
 
     @Column(name = "task_status")
     @Enumerated(EnumType.STRING)
-    private TaskStatus taskStatus;
+    private TaskStatus taskStatus = TaskStatus.todo;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
