@@ -14,13 +14,20 @@ public record CreateTaskRequest(
         @Size(max = 1000, message = DESCRIPTION_SIZE_ERROR_MESSAGE)
         String description,
 
-        @NotNull(message = TASK_STATUS_ERROR_MESSAGE)
+
         TaskStatus status
 ) {
+
+    private final static TaskStatus defaultTaskStatus = TaskStatus.todo;
+
+    public CreateTaskRequest {
+        if(status == null) {
+            status = defaultTaskStatus;
+        }
+    }
 
     private final static String BLANK_TITLE_ERROR_MESSAGE = "Title should not be blank";
     private final static String TITLE_SIZE_ERROR_MESSAGE = "Title must be at most 50 characters long";
     private final static String BLANK_DESCRIPTION_ERROR_MESSAGE = "Description should not be blank";
     private final static String DESCRIPTION_SIZE_ERROR_MESSAGE = "Description must be at most 1000 characters long";
-    private final static String TASK_STATUS_ERROR_MESSAGE = "Task status is required";
 }
